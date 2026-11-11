@@ -42,9 +42,9 @@
         
         <!-- Hero Text -->
         <div>
-          <h1 class="hero-title">
-            Halo, Saya <span>Ivanez Yuda Pratama Putra</span>
-          </h1>
+        <h1 id="hero-title">
+            Halo, Saya <span class="typed-text"></span><span class="cursor" aria-hidden="true">&nbsp;</span>
+        </h1>
 
           <p class="hero-subtitle">
             Pengembang perangkat lunak lulusan RPL yang berfokus pada <strong>Frontend Development</strong>, serta berpengalaman dalam <strong>Backend Development</strong> dan <strong>UI/UX Design</strong>.
@@ -253,4 +253,50 @@
   </footer>
 
 </body>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+  const typedTextSpan = document.querySelector(".typed-text");
+  
+  // Daftar teks yang akan diketik bergantian
+  const textArray = [
+    "Ivanez Yuda Pratama Putra", 
+    "Frontend Developer", 
+    "UI/UX Designer"
+  ];
+  
+  const typingDelay = 100;   // Kecepatan mengetik (milidetik)
+  const erasingDelay = 60;   // Kecepatan menghapus (milidetik)
+  const newTextDelay = 2000; // Jeda waktu sebelum mengetik kata berikutnya
+  
+  let textArrayIndex = 0;
+  let charIndex = 0;
+
+  function type() {
+    if (charIndex < textArray[textArrayIndex].length) {
+      typedTextSpan.textContent += textArray[textArrayIndex].charAt(charIndex);
+      charIndex++;
+      setTimeout(type, typingDelay);
+    } else {
+      setTimeout(erase, newTextDelay);
+    }
+  }
+
+  function erase() {
+    if (charIndex > 0) {
+      typedTextSpan.textContent = textArray[textArrayIndex].substring(0, charIndex - 1);
+      charIndex--;
+      setTimeout(erase, erasingDelay);
+    } else {
+      textArrayIndex++;
+      if (textArrayIndex >= textArray.length) textArrayIndex = 0;
+      setTimeout(type, typingDelay + 1100);
+    }
+  }
+
+  if (typedTextSpan) {
+    setTimeout(type, newTextDelay + 250);
+  }
+});
+</script>
 </html>

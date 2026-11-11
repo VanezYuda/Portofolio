@@ -585,6 +585,26 @@
       margin-top: 32px;
     }
 
+    .typed-text {
+  color: #2563eb; /* Warna biru profesional */
+}
+
+.cursor {
+  display: inline-block;
+  background-color: #2563eb;
+  width: 3px;
+  height: 1.2em;
+  vertical-align: middle;
+  margin-left: 2px;
+  animation: blink 0.7s infinite;
+}
+
+@keyframes blink {
+  0% { opacity: 1; }
+  50% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
     /* ==========================================
        MEDIA QUERIES (RESPONSIVE)
        ========================================== */
